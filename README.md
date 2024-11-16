@@ -128,8 +128,6 @@ plt.xticks(rotation=45)
 # Show the plots
 plt.tight_layout()
 plt.show()
-
-*/
 ```
 
 ## Output:
