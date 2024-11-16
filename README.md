@@ -1,5 +1,9 @@
 # BLENDED_LEARNING
 # Implementation of Ridge, Lasso, and ElasticNet Regularization for Predicting Car Price
+<H3>NAME: KEERTHANA S</H3>
+<H3>REGISTER NO.: 212223240070</H3>
+<H3>EX. NO.5</H3>
+<H3>DATE:</H3>
 
 ## AIM:
 To implement Ridge, Lasso, and ElasticNet regularization models using polynomial features and pipelines to predict car price.
@@ -38,10 +42,6 @@ To implement Ridge, Lasso, and ElasticNet regularization models using polynomial
 
 ## Program:
 ```
-/*
-Program to implement Ridge, Lasso, and ElasticNet regularization using pipelines.
-Developed by: KEERTHANA S
-RegisterNumber: 212223240070
 # Importing necessary libraries
 import pandas as pd
 import numpy as np
