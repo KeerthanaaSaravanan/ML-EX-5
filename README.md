@@ -53,7 +53,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 # Load and preprocess the dataset
 data = pd.read_csv("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-ML240EN-SkillsNetwork/labs/data/CarPrice_Assignment.csv")
-data = pd.get_dummies(data.drop(['CarName', 'car_ID'], axis=1), drop_first=True)
+data = data.drop(['CarName', 'car_ID'], axis=1)
+data = pd.get_dummies(data, drop_first=True)
 
 # Define features and target
 X = data.drop('price', axis=1)
