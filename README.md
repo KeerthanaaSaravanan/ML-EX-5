@@ -43,6 +43,8 @@ To implement Ridge, Lasso, and ElasticNet regularization models using polynomial
 ```py
 # Import necessary libraries
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import Ridge, Lasso, ElasticNet
 from sklearn.preprocessing import PolynomialFeatures
@@ -67,27 +69,51 @@ models = {
     "ElasticNet": ElasticNet(alpha=1.0, l1_ratio=0.5)
 }
 
+# Store results for plotting
+mse_results = {}
+r2_results = {}
+
 # Train and evaluate models
+print("Model performance evaluated using R² score and Mean Squared Error (MSE):\n")
 for name, model in models.items():
     pipeline = Pipeline([('poly', PolynomialFeatures(degree=2)), ('model', model)])
     pipeline.fit(X_train, y_train)
     preds = pipeline.predict(X_test)
-    print(f"{name} - MSE: {mean_squared_error(y_test, preds):.2f}, R²: {r2_score(y_test, preds):.2f}")
+    mse = mean_squared_error(y_test, preds)
+    r2 = r2_score(y_test, preds)
+    
+    mse_results[name] = mse
+    r2_results[name] = r2
+    
+    print(f"{name} - MSE: {mse:.2f}, R²: {r2:.2f}")
+
+# Create bar plots for MSE and R² comparison
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+# MSE Bar Plot
+sns.barplot(x=list(mse_results.keys()), y=list(mse_results.values()), ax=axes[0], palette='Blues_d')
+axes[0].set_title('Mean Squared Error (MSE)')
+axes[0].set_ylabel('MSE')
+
+# R² Score Bar Plot
+sns.barplot(x=list(r2_results.keys()), y=list(r2_results.values()), ax=axes[1], palette='viridis')
+axes[1].set_title('R² Score')
+axes[1].set_ylabel('R² Score')
+
+# Show plots
+plt.tight_layout()
+plt.show()
 
 ```
 
 ## Output:
 
+Model performance evaluated using R² score and Mean Squared Error (MSE):
+Ridge - MSE: 39201600.88, R²: 0.50
+Lasso - MSE: 12616438.15, R²: 0.84
+ElasticNet - MSE: 8666607.74, R²: 0.89
 model = cd_fast.enet_coordinate_descent(
-
-Ridge - Mean Squared Error: 39011712.54, R² Score: 0.51
-
-Lasso - Mean Squared Error: 12616438.15, R² Score: 0.84
-
-ElasticNet - Mean Squared Error: 8666607.74, R² Score: 0.89)
-
-<img width="1197" alt="Screenshot 2024-10-06 at 8 58 51 PM" src="https://github.com/user-attachments/assets/bfeebd0c-c84d-4dce-9c38-182990f46973">
-
+![image](https://github.com/user-attachments/assets/4c149fb2-d9ed-47b9-959e-703411382ce6)
 
 ## Result:
 Thus, Ridge, Lasso, and ElasticNet regularization models were implemented successfully to predict the car price and the model's performance was evaluated using R² score and Mean Squared Error.
