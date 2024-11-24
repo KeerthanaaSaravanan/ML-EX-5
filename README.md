@@ -109,10 +109,15 @@ plt.show()
 ## Output:
 
 Model performance evaluated using R² score and Mean Squared Error (MSE):
+
 Ridge - MSE: 39201600.88, R²: 0.50
+
 Lasso - MSE: 12616438.15, R²: 0.84
+
 ElasticNet - MSE: 8666607.74, R²: 0.89
+
 model = cd_fast.enet_coordinate_descent(
+
 ![image](https://github.com/user-attachments/assets/4c149fb2-d9ed-47b9-959e-703411382ce6)
 
 ## Result:
